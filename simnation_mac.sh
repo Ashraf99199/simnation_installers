@@ -11,7 +11,7 @@ InstallSimNation () {
     mkdir -p "$HOME/Documents/SimNation/"
     curl -L $SIMNATION_URL --output simnation.zip
     unzip simnation.zip -d "$HOME/Documents/SimNation"
-    cp -v "$HOME/SimNation/Monogame/MacOS/*" "$HOME/Documents/SimNation"
+    cp -v "$HOME/Documents/SimNation/Monogame/MacOS/*" "$HOME/Documents/SimNation"
     cd "$HOME/Documents/SimNation"
     mono FreeSO.exe
 }
@@ -30,7 +30,9 @@ DownloadTSO () {
 		clear
 		unzip tso.zip -d tso/
 		cd tso
-        	sudo port install cabextract
+  		# Install Brew
+        	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	 	brew install cabextract
 		cabextract Data1.cab -d "$HOME/Documents/The Sims Online"
 		echo "Done!"
 		InstallSimNation
