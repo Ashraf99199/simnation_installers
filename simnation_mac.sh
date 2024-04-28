@@ -13,7 +13,8 @@ InstallSimNation () {
     unzip simnation.zip -d "$HOME/Documents/SimNation"
     cd "$HOME/Documents/SimNation"
     curl -L $MACEXTRAS --output macextras.zip
-    unzip macextras.zip
+    unzip macextras.zip -o
+    source ~/.bashrc
     mono FreeSO.exe
 }
 
