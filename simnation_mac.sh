@@ -5,14 +5,15 @@ export TSOCLIENT_DIR="https://beta.freeso.org/LauncherResourceCentral/TheSimsOnl
 export SIMNATION_URL="http://simnation.ddns.net/patch.zip"
 export MONO_URL="https://beta.freeso.org/LauncherResourceCentral/Mono"
 export SDL_URL="https://beta.freeso.org/LauncherResourceCentral/SDL"
-
+export MACEXTRAS="https://beta.freeso.org/LauncherResourceCentral/MacExtras"
 InstallSimNation () {
     echo "Downloading"
     mkdir -p "$HOME/Documents/SimNation/"
     curl -L $SIMNATION_URL --output simnation.zip
     unzip simnation.zip -d "$HOME/Documents/SimNation"
-    cp -v "$HOME/Documents/SimNation/Monogame/MacOS/*" "$HOME/Documents/SimNation"
     cd "$HOME/Documents/SimNation"
+    curl -L $MACEXTRAS --output macextras.zip
+    unzip macextras.zip
     mono FreeSO.exe
 }
 
