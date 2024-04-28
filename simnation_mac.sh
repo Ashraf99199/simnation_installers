@@ -10,8 +10,10 @@ DownloadSDL() {
     if [ -f /usr/local/bin/curl ]; then
         curl -L "$SDL_URL" --output sdl.dmg
         sudo hdiutil attach sdl.dmg
-        sudo rm -rf /Library/Frameworks/SDL2.framework
-        sudo cp -R /Volumes/SDL2/SDL2.framework /Library/Frameworks
+	if [ -f /Library/Frameworks/SDL2.framework ]; then
+        	sudo rm -rf /Library/Frameworks/SDL2.framework
+        fi
+	sudo cp -R /Volumes/SDL2/SDL2.framework /Library/Frameworks
         sudo hdiutil unmount /Volumes/SDL2
         DownloadTSO
     fi
@@ -19,12 +21,11 @@ DownloadSDL() {
 
 InstallSimNation () {
     echo "Downloading"
-    mkdir -v "$HOME/TSO"
-    mkdir -p "$HOME/SimNation/"
+    mkdir -p "$HOME/Documents/SimNation/"
     curl -L $SIMNATION_URL --output simnation.zip
-    unzip simnation.zip -d "$HOME/SimNation"
-    cp -v "$HOME/SimNation/Monogame/MacOS/*" "$HOME/SimNation"
-    cd "$HOME/SimNation"
+    unzip simnation.zip -d "$HOME/Documents/SimNation"
+    cp -v "$HOME/SimNation/Monogame/MacOS/*" "$HOME/Documents/SimNation"
+    cd "$HOME/Documents/SimNation"
     mono FreeSO.exe
 }
 
