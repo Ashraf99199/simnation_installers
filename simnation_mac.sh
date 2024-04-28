@@ -36,14 +36,14 @@ DownloadTSO () {
 		echo "TSO already installed!"
 		InstallSimNation
 	else
-        curl -L $TSOCLIENT_DIR --output tso.zip
+        	curl -L $TSOCLIENT_DIR --output tso.zip
 		clear
 		mkdir -v tso
 		mkdir -p "$HOME/Documents/The Sims Online"
 		clear
 		unzip tso.zip -d tso/
 		cd tso
-        sudo port install cabextract
+        	sudo port install cabextract
 		cabextract Data1.cab -d "$HOME/Documents/The Sims Online"
 		echo "Done!"
 		InstallSimNation
